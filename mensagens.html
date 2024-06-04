@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxo - Mensagens</title>
+  <link rel="stylesheet" href="css/default.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div id="title">
+        <img src="images/barco1.png" alt="ícone de barco">
+        <div class="headtitle">
+          <h1>Luxo</h1>
+          <h2>Aluguel de iates</h2>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="navmenu">
+          <li><a href="index.html">Página inicial</a></li>
+          <li><a href="aluguel.html">Aluguel de iates</a></li>
+          <li><a href="destinos.html">Destinos</a></li>
+          <li><a href="tripulacao.html">Tripulação</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="pagtitle">
+        <div class="bgtitle"></div>
+        <h2>Mensagens Recebidas</h2>
+      </div>
+
+      <table id="mensagensTable">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Mensagem</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2023 por Luxo aluguel de iates</p>
+  </footer>
+
+  <script src="js/jquery-3.6.4.min.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var mensagens = obterMensagens();
+      var tableBody = document.querySelector("#mensagensTable tbody");
+
+      mensagens.forEach(function (mensagem) {
+        var row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${mensagem.nome}</td>
+          <td>${mensagem.email}</td>
+          <td>${mensagem.mensagem}</td>
+        `;
+        tableBody.appendChild(row);
+      });
+    });
+
+    function obterMensagens() {
+      return [
+        {
+          nome: "João Silva",
+          email: "joao.silva@example.com",
+          mensagem: "Gostaria de mais informações sobre os iates disponíveis."
+        },
+        {
+          nome: "Maria Oliveira",
+          email: "maria.oliveira@example.com",
+          mensagem: "Qual é o preço para alugar um iate por uma semana?"
+        },
+        {
+          nome: "Carlos Pereira",
+          email: "carlos.pereira@example.com",
+          mensagem: "Há opções de iates com tripulação completa?"
+        }
+      ];
+    }
+  </script>
+</body>
+</html>
